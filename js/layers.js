@@ -31,7 +31,7 @@ addLayer("p", {
             cost: new Decimal(1),
         },
     },
-    layerShown(){return true}
+    layerShown() { return true }
 })
 
 addLayer("s", {
@@ -50,7 +50,7 @@ addLayer("s", {
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() { return player.points }, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.5, // Prestige currency exponent
+    exponent: 0.3, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
