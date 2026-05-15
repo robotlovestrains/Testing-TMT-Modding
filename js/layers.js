@@ -27,8 +27,17 @@ addLayer("p", {
     upgrades: {
         11: {
             title: "First Comes First",
-            description: "Double your point gain.",
+            description: "Double your Point gain.",
             cost: new Decimal(1),
+        },
+        12: {
+            title: "And Second Comes Next",
+            description: "Increase Point gain.",
+            cost: new Decimal(2),
+            effect() {
+                return player[this.layer].points.add(1).pow(0.5)
+            },
+            effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
         },
     },
     layerShown() { return true }
