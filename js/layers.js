@@ -54,7 +54,7 @@ addLayer("p", {
             description: "Unlock 3 Buyables.",
             cost: new Decimal(15),
             onPurchase() {
-
+                this.layer.buyables.buyables.unlocked = true
             },
         },
     },
@@ -69,7 +69,8 @@ addLayer("p", {
             },
             effect() {
                 return player[this.layer].this.id.add(1).pow(0.1)
-            }
+            },
+            unlocked() {false}
         },
         12: {
             cost(x) { return new Decimal(1.5).mul(x) },
@@ -81,7 +82,8 @@ addLayer("p", {
             },
             effect() {
                 return player[this.layer].this.id.add(1)
-            }
+            },
+            unlocked() {false}
         },
         13: {
             cost(x) { return new Decimal(1.5).mul(x) },
@@ -93,7 +95,8 @@ addLayer("p", {
             },
             effect() {
                 return player[this.layer].this.id.add(1).pow(1.5)
-            }
+            },
+            unlocked() {false}
         },
     },
     layerShown() { return true }
