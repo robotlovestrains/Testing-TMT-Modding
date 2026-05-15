@@ -40,15 +40,6 @@ addLayer("p", {
             },
             effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
         },
-        13: {
-            title: "And Final Comes Last",
-            description: "Increase Prestage Point gain.",
-            cost: new Decimal(2),
-            effect() {
-                return player.points.add(1).pow(0.15)
-            },
-            effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
-        },
     },
     layerShown() { return true }
 })
