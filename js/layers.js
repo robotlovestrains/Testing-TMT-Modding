@@ -55,5 +55,12 @@ addLayer("s", {
     hotkeys: [
         { key: "s", description: "S: Reset for Stige points", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
     ],
+    upgrades: {
+        11: {
+            title: "First Comes First",
+            description: "Double your point gain.",
+            cost: new Decimal(1),
+        },
+    },
     layerShown() { return true }
 })
