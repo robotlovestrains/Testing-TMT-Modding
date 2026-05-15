@@ -53,9 +53,6 @@ addLayer("p", {
             title: "And Last Comes Last",
             description: "Unlock 3 Buyables.",
             cost: new Decimal(15),
-            onPurchase() {
-                this.layer.buyables.buyables.unlocked = true
-            },
         },
     },
     buyables: {
@@ -70,7 +67,6 @@ addLayer("p", {
             effect() {
                 return player[this.layer].this.id.add(1).pow(0.1)
             },
-            unlocked() {false}
         },
     },
     layerShown() { return true }
