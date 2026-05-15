@@ -49,14 +49,6 @@ addLayer("p", {
             },
             effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
         },
-        14: {
-            title: "And Last Comes Last",
-            description: "Unlock 3 Buyables.",
-            cost: new Decimal(15),
-            onPurchase() {
-                
-            },
-        },
     },
     layerShown() { return true }
 })
