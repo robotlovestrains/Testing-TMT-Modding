@@ -65,7 +65,6 @@ addLayer("p", {
             setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
         },
     },
-    },
     layerShown() { return true }
 })
 
