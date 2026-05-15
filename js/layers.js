@@ -41,13 +41,59 @@ addLayer("p", {
             effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
         },
         13: {
-            title: "And Final Comes Last",
+            title: "And Thrird Comes Later",
             description: "Increase Prestage Point gain.",
-            cost: new Decimal(2),
+            cost: new Decimal(5),
             effect() {
                 return player.points.add(1).pow(0.15)
             },
             effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) }, // Add formatting to the effect
+        },
+        14: {
+            title: "And Last Comes Last",
+            description: "Unlock 3 Buyables.",
+            cost: new Decimal(15),
+            onPurchase() {
+
+            },
+        },
+    },
+    buyables: {
+        11: {
+            cost(x) { return new Decimal(1.5).mul(x) },
+            display() { return "First Is The Worst" },
+            canAfford() { return player[this.layer].points.gte(this.cost()) },
+            buy() {
+                player[this.layer].points = player[this.layer].points.sub(this.cost())
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(20))
+            },
+            effect() {
+                return player[this.layer].this.id.add(1).pow(0.1)
+            }
+        },
+        12: {
+            cost(x) { return new Decimal(1.5).mul(x) },
+            display() { return "Second Is The Best" },
+            canAfford() { return player[this.layer].points.gte(this.cost()) },
+            buy() {
+                player[this.layer].points = player[this.layer].points.sub(this.cost())
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(50))
+            },
+            effect() {
+                return player[this.layer].this.id.add(1)
+            }
+        },
+        13: {
+            cost(x) { return new Decimal(1.5).mul(x) },
+            display() { return "Third Has The Tressure Chest" },
+            canAfford() { return player[this.layer].points.gte(this.cost()) },
+            buy() {
+                player[this.layer].points = player[this.layer].points.sub(this.cost())
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(50))
+            },
+            effect() {
+                return player[this.layer].this.id.add(1).pow(1.5)
+            }
         },
     },
     layerShown() { return true }
