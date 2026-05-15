@@ -56,18 +56,6 @@ addLayer("p", {
         },
     },
     buyables: {
-        11: {
-            cost(x) { return new Decimal(1.5).mul(x) },
-            display() { return "First Is The Worst" },
-            canAfford() { return player[this.layer].points.gte(this.cost()) },
-            buy() {
-                player[this.layer].points = player[this.layer].points.sub(this.cost())
-                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(20))
-            },
-            effect() {
-                return player[this.layer].this.id.add(1).pow(0.1)
-            },
-        },
     },
     layerShown() { return true }
 })
