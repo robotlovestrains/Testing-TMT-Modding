@@ -63,7 +63,7 @@ addLayer("s", {
             points: new Decimal(0),
         }
     },
-    color: "#1BAC00",
+    color: "#169100",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "stige points", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
