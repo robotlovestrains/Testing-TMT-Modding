@@ -63,7 +63,7 @@ addLayer("p", {
             title: "First is the Worst",
             cost(x) { return new Decimal(1).mul(x) },
             effect() {
-                return this.getBuyableAmount(this.layer, this.id).mul(0.25).add(1)
+                return getBuyableAmount(this.layer, this.id).mul(0.25).add(1)
             },
             display() { return "Boost Points by x" + format(upgradeEffect(this.layer, this.id)) },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
