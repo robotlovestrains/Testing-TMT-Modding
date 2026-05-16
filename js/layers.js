@@ -65,7 +65,7 @@ addLayer("p", {
             effect() {
                 return getBuyableAmount(this.layer, this.id).mul(0.25).add(1)
             },
-            display() { return "Boost Points by x" + format(buyableEffect(this.layer, this.id)) + "Cost: " + format(this.cost) + " Prestage Points" },
+            display() { return "Boost Points by x" + format(buyableEffect(this.layer, this.id)) + " Cost: " + format(this.cost) + " Prestage Points" },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
