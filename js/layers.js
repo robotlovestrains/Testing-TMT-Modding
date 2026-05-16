@@ -55,7 +55,7 @@ addLayer("p", {
             description: "Unlock 3 Buyables.",
             cost: new Decimal(20),
             onPurchase() {
-                this.layer.buyables.unlocked = true
+                this.layer.buyables.unlocked() = true
             }
         },
     },
@@ -72,7 +72,6 @@ addLayer("p", {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
                 setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
             },
-            unlocked() {true},
         },
         12: {
             title: "Second is the Best",
