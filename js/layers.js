@@ -77,7 +77,7 @@ addLayer("p", {
             title: "Second is the Best",
             cost(x) { return new Decimal(1.25).mul(x).add(45) },
             effect() {
-                return getBuyableAmount(this.layer, this.id).exponent(1.05).mul(0.75).add(1)
+                return getBuyableAmount(this.layer, this.id).pow(1.05).mul(0.75).add(1)
             },
             display() { return "Boost Points and Prestige Points by x" + format(buyableEffect(this.layer, this.id)) + " Cost: " + format(this.cost) + " Prestige Points" },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
