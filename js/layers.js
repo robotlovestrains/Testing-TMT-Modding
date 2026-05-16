@@ -61,11 +61,11 @@ addLayer("p", {
     buyables: {
         11: {
             title: "First is the Worst",
-            cost(x) { return new Decimal(1).mul(x) },
+            cost(x) { return new Decimal(1).mul(x).add(20) },
             effect() {
                 return getBuyableAmount(this.layer, this.id).mul(0.25).add(1)
             },
-            display() { return "Boost Points by x" + format(buyableEffect(this.layer, this.id)) },
+            display() { return "Boost Points by x" + format(buyableEffect(this.layer, this.id)) + "Cost: " + this.cost + " Prestage Points" },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
