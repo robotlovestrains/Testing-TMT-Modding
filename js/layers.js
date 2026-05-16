@@ -52,7 +52,7 @@ addLayer("p", {
         14: {
             title: "And Last Comes Last",
             description: "Unlock 3 Buyables.",
-            cost: new Decimal(15),
+            cost: new Decimal(20),
             onPurchase() {
                 this.layer.buyables.unlocked = true
             }
