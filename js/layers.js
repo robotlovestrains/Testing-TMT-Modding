@@ -34,7 +34,7 @@ addLayer("p", {
         },
         12: {
             title: "And Second Comes Next",
-            description: "Prestage Points Boost Point gain.",
+            description: "Prestige Points Boost Point gain.",
             cost: new Decimal(2),
             effect() {
                 return player[this.layer].points.add(1).pow(0.5)
@@ -43,7 +43,7 @@ addLayer("p", {
         },
         13: {
             title: "And Thrird Comes Later",
-            description: "Points Boost Prestage Point gain.",
+            description: "Points Boost Prestige Point gain.",
             cost: new Decimal(5),
             effect() {
                 return player.points.add(1).pow(0.15)
@@ -66,7 +66,7 @@ addLayer("p", {
             effect() {
                 return getBuyableAmount(this.layer, this.id).mul(0.25).add(1)
             },
-            display() { return "Boost Points by x" + format(buyableEffect(this.layer, this.id)) + " Cost: " + format(this.cost) + " Prestage Points" },
+            display() { return "Boost Points by x" + format(buyableEffect(this.layer, this.id)) + " Cost: " + format(this.cost) + " Prestige Points" },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
@@ -74,12 +74,12 @@ addLayer("p", {
             },
         },
         12: {
-            title: "First is the Worst",
-            cost(x) { return new Decimal(1).mul(x).add(20) },
+            title: "Second is the Best",
+            cost(x) { return new Decimal(1.25).mul(x).add(45) },
             effect() {
-                return getBuyableAmount(this.layer, this.id).mul(0.25).add(1)
+                return getBuyableAmount(this.layer, this.id).exponent(1.05).mul(0.75).add(1)
             },
-            display() { return "Boost Points by x" + format(buyableEffect(this.layer, this.id)) + " Cost: " + format(this.cost) + " Prestage Points" },
+            display() { return "Boost Points and Prestige Points by x" + format(buyableEffect(this.layer, this.id)) + " Cost: " + format(this.cost) + " Prestige Points" },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
