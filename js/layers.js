@@ -15,6 +15,7 @@ addLayer("p", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+        if (hasUpgrade('p', 13)) mult = mult.mult(upgradeEffect('p', 13))
 
         return mult
     },
