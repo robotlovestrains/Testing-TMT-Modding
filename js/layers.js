@@ -57,7 +57,7 @@ addLayer("p", {
     },
     buyables: {
         11: {
-            title = "First is the Worst",
+            title: "First is the Worst",
             cost(x) { return new Decimal(1).mul(x) },
             effect() {
                 return this.getBuyableAmount(this.layer, this.id).mul(0.25).add(1)
