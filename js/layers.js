@@ -55,8 +55,6 @@ addLayer("p", {
             cost: new Decimal(15),
         },
     },
-    buyables: {
-    },
     layerShown() { return true }
 })
 
