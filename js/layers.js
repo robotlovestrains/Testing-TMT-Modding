@@ -34,7 +34,7 @@ addLayer("p", {
         },
         12: {
             title: "And Second Comes Next",
-            description: "Increase Point gain.",
+            description: "Prestage Points Boost Point gain.",
             cost: new Decimal(2),
             effect() {
                 return player[this.layer].points.add(1).pow(0.5)
@@ -43,7 +43,7 @@ addLayer("p", {
         },
         13: {
             title: "And Thrird Comes Later",
-            description: "Increase Prestage Point gain.",
+            description: "Points Boost Prestage Point gain.",
             cost: new Decimal(5),
             effect() {
                 return player.points.add(1).pow(0.15)
