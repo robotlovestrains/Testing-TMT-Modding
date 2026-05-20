@@ -103,7 +103,7 @@ addLayer("s", {
             effectDescription: "Stige Points Boost Points.",
             done() { return player[this.layer].points.gte(1) },
             effect() {
-                return Decimal(1).times(player[this.layer].points)
+                return player[this.layer].points.add(1)
             },
         },
     },
