@@ -105,6 +105,7 @@ addLayer("s", {
             effect() {
                 return player[this.layer].points.add(1)
             },
+			Unlocked() {return false}
         },
     },
     layerShown() { return true },
