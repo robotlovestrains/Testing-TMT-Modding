@@ -56,7 +56,7 @@ addLayer("p", {
             description: "Prestige Points and Points Boost Point gain.",
             cost: new Decimal(20),
             effect() {
-                return player.points.add(1).pow(player[this.layer].points.times(0.15))
+                return player.points.add(1).pow(0.3).times(player[this.layer].points.add(1).pow(0.75))
             },
             effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) },
         },
