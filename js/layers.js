@@ -101,11 +101,11 @@ addLayer("s", {
         1: {
             requirementDescription: "2 Stige",
             effectDescription: "Stige Points Boost Points.",
-            done() { return player[this.layer].points.gte(1) },
+            done() { return player[this.layer].points.gte(2) },
             effect() {
                 return player[this.layer].points.add(1)
             },
-			Unlocked() {return false}
+			Unlocked() {return true}
         },
     },
     layerShown() { return true },
