@@ -16,7 +16,7 @@ addLayer("p", {
     gainMult() {
         mult = new Decimal(1)
         if (hasUpgrade('p', 13)) mult = mult.times(upgradeEffect('p', 13))
-            if (hasMilestone('s', 0)) mult = mult.times(2)
+        if (hasMilestone('s', 0)) mult = mult.times(2)
 
         return mult
     },
