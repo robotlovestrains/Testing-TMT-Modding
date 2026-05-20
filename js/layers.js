@@ -55,7 +55,7 @@ addLayer("p", {
             description: "Unlock 3 Buyables.",
             cost: new Decimal(20),
             onPurchase() {
-                this.layer.buyables.unlocked() = true
+                this.layer.buyables.unlocked()
             }
         },
     },
