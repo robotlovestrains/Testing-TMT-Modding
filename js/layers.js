@@ -79,7 +79,7 @@ addLayer("p", {
             effect() {
                 return getBuyableAmount(this.layer, this.id).pow(1.05).mul(0.75).add(1)
             },
-            display() { return "Boost Points and Prestige Points by x" + format(buyableEffect(this.layer, this.id)) + " Cost: " + format(this.cost) + " Prestige Points" },
+            display() { return "Boost Points and Prestige Points by x" + format(buyableEffect(this.layer, this.id)) + " Cost: " + format(Decimal(1.25).mul(getBuyableAmount(this.layer, this.id)).add(45)) + " Prestige Points" },
             canAfford() { return player[this.layer].points.gte(this.cost()) },
             buy() {
                 player[this.layer].points = player[this.layer].points.sub(this.cost())
