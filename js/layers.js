@@ -16,6 +16,7 @@ addLayer("p", {
     gainMult() {
         mult = new Decimal(1)
         if (hasUpgrade('p', 13)) mult = mult.times(upgradeEffect('p', 13))
+            if (hasMilestone('s', 0)) mult = mult.times(2)
 
         return mult
     },
@@ -52,40 +53,12 @@ addLayer("p", {
         },
         14: {
             title: "And Last Comes Last",
-            description: "Unlock 3 Buyables.",
+            description: "Prestige Points and Points Boost Point gain.",
             cost: new Decimal(20),
-            onPurchase() {
-
-            }
-        },
-    },
-    buyables: {
-        11: {
-            title: "First is the Worst",
-            cost(x) { return new Decimal(1).mul(x).add(20) },
             effect() {
-                return getBuyableAmount(this.layer, this.id).mul(0.25).add(1)
+                return player.points.add(1).pow(player[this.layer].points.times(0.15))
             },
-            display() { return "Boost Points by x" + format(buyableEffect(this.layer, this.id)) + " Cost: " + format(Decimal(1).mul(getBuyableAmount(this.layer, this.id)).add(20)) + " Prestige Points" },
-            canAfford() { return player[this.layer].points.gte(this.cost()) },
-            buy() {
-                player[this.layer].points = player[this.layer].points.sub(this.cost())
-                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
-            },
-        },
-        12: {
-            title: "Second is the Best",
-            cost(x) { return new Decimal(1.25).mul(x).add(45) },
-            effect() {
-                return getBuyableAmount(this.layer, this.id).pow(1.05).mul(0.75).add(1)
-            },
-            display() { return "Boost Points and Prestige Points by x" + format(buyableEffect(this.layer, this.id)) + " Cost: " + format(Decimal(1.25).mul(getBuyableAmount(this.layer, this.id)).add(45)) + " Prestige Points" },
-            canAfford() { return player[this.layer].points.gte(this.cost()) },
-            buy() {
-                player[this.layer].points = player[this.layer].points.sub(this.cost())
-                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
-            },
-            unlocked() {false},
+            effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) },
         },
     },
     layerShown() { return true },
@@ -119,5 +92,20 @@ addLayer("s", {
     hotkeys: [
         { key: "s", description: "S: Reset for Stige points", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
     ],
+    milestones: {
+        0: {
+            requirementDescription: "1 Stige",
+            effectDescription: "Double Points and Prestige.",
+            done() { return player[this.layer].points.gte(1) }
+        },
+        1: {
+            requirementDescription: "2 Stige",
+            effectDescription: "Stige Points Boost Points.",
+            done() { return player[this.layer].points.gte(1) },
+            effect() {
+                return Decimal(1).times(player[this.layer].points)
+            },
+        },
+    },
     layerShown() { return true },
 })
