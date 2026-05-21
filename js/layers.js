@@ -56,7 +56,7 @@ addLayer("p", {
             description: "Prestige Points and Points Boost Point gain.",
             cost: new Decimal(20),
             effect() {
-                return player.points.add(1).pow(0.3).times(player[this.layer].points.add(1).pow(0.75))
+                return player.points.add(1).pow(0.3).times(player[this.layer].points.add(1).pow(0.1))
             },
             effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) },
         },
@@ -96,7 +96,10 @@ addLayer("s", {
         0: {
             requirementDescription: "1 Stige",
             effectDescription: "Double Points and Prestige.",
-            done() { return player[this.layer].points.gte(1) }
+            done() { return player[this.layer].points.gte(1) },
+            onComplete() {
+                this.layer.milestones['s', 11].unlocked = true
+            },
         },
         1: {
             requirementDescription: "2 Stige",
@@ -105,7 +108,7 @@ addLayer("s", {
             effect() {
                 return player[this.layer].points.add(1)
             },
-			Unlocked() {return false}
+			Unlocked() {},
         },
     },
     layerShown() { return true },
