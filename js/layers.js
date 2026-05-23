@@ -80,7 +80,7 @@ addLayer("s", {
     baseResource: "points",
     baseAmount() { return player.points },
     type: "static",
-    exponent: 0.3,
+    exponent: 0.35,
     gainMult() {
         mult = new Decimal(1)
         return mult
