@@ -98,7 +98,7 @@ addLayer("s", {
             effectDescription: "Double Points and Prestige.",
             done() { return player[this.layer].points.gte(1) },
             onComplete() {
-                this.layer.milestones[this.layer, 1].unlocked = true
+                this.layer.milestones[this.layer, '1'].unlocked = true
             },
         },
         1: {
