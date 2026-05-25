@@ -108,7 +108,7 @@ addLayer("s", {
         },
         2: {
             requirementDescription: "3 Stige",
-            effectDescription: "Stige Points Boost Prestige Points.",
+            effectDescription: "Stige Points Boost Prestige Points."  + format(upgradeEffect(this.layer, this.id)),
             done() { return player[this.layer].points.gte(2) },
             effect() {
                 return player[this.layer].points.pow(0.3).add(1)
