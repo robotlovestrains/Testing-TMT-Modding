@@ -109,11 +109,42 @@ addLayer("s", {
         2: {
             requirementDescription: "3 Stige",
             effectDescription: "Stige Points Boost Prestige Points. Boost: (S^0.3 + 1)",
-            done() { return player[this.layer].points.gte(2) },
+            done() { return player[this.layer].points.gte(3) },
             effect() {
                 return player[this.layer].points.pow(0.3).add(1)
             },
         },
     },
     layerShown() { return true },
+})
+
+addLayer("f", {
+    startData() { return {
+        unlocked: true,
+        points: new Decimal(0),
+    }},
+
+    color: "#dbcf1c",
+    resource: "finish points",
+    row: 1,
+    hotkeys: [
+        { key: "f", description: "F: Reset for Finish points", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
+    ],
+
+    baseResource: "prestige points",
+    baseAmount() { return player.points },
+
+    requires: new Decimal(200),
+
+    type: "normal",
+    exponent: 0.1,
+
+    gainMult() {
+        return new Decimal(1)
+    },
+    gainExp() {
+        return new Decimal(1)
+    },
+
+    layerShown() { return false },
 })
