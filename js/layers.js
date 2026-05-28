@@ -27,6 +27,9 @@ addLayer("p", {
     hotkeys: [
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+    passiveGeneration() {
+        if(hasMilestone('f', 0)) 0.1
+    },
     upgrades: {
         11: {
             title: "First Comes First",
@@ -130,19 +133,14 @@ addLayer("s", {
 })
 
 addLayer("f", {
+    name: "finish",
+    symbol: "F",
     startData() { return {
         unlocked: true,
         points: new Decimal(0),
     }},
 
-    color: "#dbcf1c",
-    resource: "finish points",
-    row: 1,
-    hotkeys: [
-        { key: "f", description: "F: Reset for Finish points", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
-    ],
-
-    baseResource: "prestige points",
+        baseResource: "points",
     baseAmount() { return player.points },
 
     requires: new Decimal(75000),
@@ -155,6 +153,20 @@ addLayer("f", {
     },
     gainExp() {
         return new Decimal(1)
+    },
+    color: "#dbcf1c",
+    resource: "finish points",
+    row: 1,
+    hotkeys: [
+        { key: "f", description: "F: Reset for Finish points", onPress() { if (canReset(this.layer)) doReset(this.layer) } },
+    ],
+
+    milestones: {
+        0: {
+            requirementDescription: "1 Finish",
+            effectDescription: "x10 Points, Prestige and Stige Points and gain 10% of Prestige Points.",
+            done() { return player[this.layer].points.gte(1) },
+        },
     },
 
     layerShown() { return hasMilestone('s', 3) },
