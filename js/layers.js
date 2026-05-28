@@ -17,6 +17,7 @@ addLayer("p", {
         mult = new Decimal(1)
         if (hasUpgrade('p', 13)) mult = mult.times(upgradeEffect('p', 13))
         if (hasMilestone('s', 0)) mult = mult.times(2)
+        if (hasMilestone('f', 0)) mult = mult.times(10)
 
         return mult
     },
@@ -29,7 +30,7 @@ addLayer("p", {
     ],
     passiveGeneration() {
         gain = new Decimal(0)
-        if(hasMilestone('f', 0)) gain = gain.add(10)
+        if(hasMilestone('f', 0)) gain = gain.add(0.1)
         return gain
     },
     upgrades: {
@@ -91,6 +92,7 @@ addLayer("s", {
     exponent: 0.35,
     gainMult() {
         mult = new Decimal(1)
+        if (hasMilestone('f', 0)) mult = mult.times(10)
         return mult
     },
     gainExp() {
