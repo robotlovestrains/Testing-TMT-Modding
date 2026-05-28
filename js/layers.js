@@ -30,6 +30,7 @@ addLayer("p", {
     passiveGeneration() {
         gain = new Decimal(0)
         if(hasMilestone('f', 0)) gain = gain.add(10)
+        return gain
     },
     upgrades: {
         11: {
