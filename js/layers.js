@@ -40,6 +40,7 @@ addLayer("p", {
             effect() {
                 return player[this.layer].points.add(1).pow(0.5)
             },
+            unlocked() {return hasUpgrade('p', 11)},
             effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) },
         },
         13: {
@@ -49,6 +50,7 @@ addLayer("p", {
             effect() {
                 return player.points.add(1).pow(0.15)
             },
+            unlocked() {return hasUpgrade('p', 11)},
             effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) },
         },
         14: {
@@ -58,6 +60,7 @@ addLayer("p", {
             effect() {
                 return player.points.add(1).pow(0.3).times(player[this.layer].points.add(1).pow(0.1))
             },
+            unlocked() {return hasUpgrade('p', 13)},
             effectDisplay() { return "x" + format(upgradeEffect(this.layer, this.id)) },
         },
     },
@@ -100,19 +103,27 @@ addLayer("s", {
         },
         1: {
             requirementDescription: "2 Stige",
-            effectDescription: "Stige Points Boost Points. Boost: (S + 1)",
+            effectDescription: "Stige Points Boost Points. Boost: " + format(player[this.layer].points.add(1)),
             done() { return player[this.layer].points.gte(2) },
             effect() {
                 return player[this.layer].points.add(1)
             },
+            unlocked() {return hasMilestone("s", 0)},
         },
         2: {
             requirementDescription: "3 Stige",
-            effectDescription: "Stige Points Boost Prestige Points. Boost: (S^0.3 + 1)",
+            effectDescription: "Stige Points Boost Prestige Points. Boost: " + format(player[this.layer].points.pow(0.3).add(1)),
             done() { return player[this.layer].points.gte(3) },
             effect() {
                 return player[this.layer].points.pow(0.3).add(1)
             },
+            unlocked() {return hasMilestone("s", 1)},
+        },
+        3: {
+            requirementDescription: "5 Stige",
+            effectDescription: "Unlock Finish Layer",
+            done() { return player[this.layer].points.gte(5) },
+            unlocked() {return hasMilestone("s", 2)},
         },
     },
     layerShown() { return true },
