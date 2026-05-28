@@ -143,9 +143,9 @@ addLayer("f", {
     ],
 
     baseResource: "prestige points",
-    baseAmount() { return player.prestige.points },
+    baseAmount() { return player.points },
 
-    requires: new Decimal(200),
+    requires: new Decimal(75000),
 
     type: "normal",
     exponent: 0.1,
