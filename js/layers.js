@@ -157,5 +157,5 @@ addLayer("f", {
         return new Decimal(1)
     },
 
-    layerShown() { return hasMilestone('h', 3) },
+    layerShown() { return hasMilestone('s', 3) },
 })
