@@ -168,7 +168,7 @@ addLayer("f", {
     milestones: {
         0: {
             requirementDescription: "1 Finish",
-            effectDescription: "x10 Points, Prestige and Stige Points and gain 10% of Prestige Points.",
+            effectDescription: "x10 Points, Prestige and Stige Points and gain 10% of Prestige Points. Good Job.",
             done() { return player[this.layer].points.gte(1) },
         },
     },
