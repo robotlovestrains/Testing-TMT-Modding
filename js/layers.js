@@ -28,7 +28,8 @@ addLayer("p", {
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     passiveGeneration() {
-        if(hasMilestone('f', 0)) 10
+        gain = new Decimal(0)
+        if(hasMilestone('f', 0)) gain = gain.add(10)
     },
     upgrades: {
         11: {
