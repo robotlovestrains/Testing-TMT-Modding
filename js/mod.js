@@ -48,6 +48,8 @@ function getPointGen() {
 	if (hasMilestone('f', 0)) gain = gain.times(10)
 	if (inChallenge('f', 11)) gain = gain.times(0.25)
 	if (hasChallenge('f', 11)) gain = gain.times(5)
+	if (hasUpgrade('f', 15)) gain = gain.times(1.0001)
+	if (hasUpgrade('f', 21)) gain = gain.times(2.5)
 	return gain
 }
 
@@ -61,7 +63,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e100"))
+	return player.points.gte(new Decimal("10000000"))
 }
 
 

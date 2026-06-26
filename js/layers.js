@@ -176,6 +176,13 @@ addLayer("f", {
             requirementDescription: "2 Finish",
             effectDescription: "Unlock a challenge and x2 Points",
             done() { return player[this.layer].points.gte(2) },
+            unlocked() {return hasMilestone('f', 0)},
+        },
+        2: {
+            requirementDescription: "5 Finish",
+            effectDescription: "x100 Points and x10 Prestige Points to Finish.",
+            done() { return player[this.layer].points.gte(5) },
+            unlocked() {return hasMilestone('f', 1)},
         },
     },
 
@@ -183,8 +190,8 @@ addLayer("f", {
         11: {
             name: "First is the Best?",
             challengeDescription: "/4 Points and /10 Prestige Points",
-            canComplete: function() {return player.points.gte(100)},
-            goalDescription: "Get 100 Points",
+            canComplete: function() {return player.points.gte(10000)},
+            goalDescription: "Get 10,000 Points",
             rewardDescription: "x5 Points and Unlock 1 Finish Upgrade",
             unlocked() {return hasMilestone('f', 1)},
         },
