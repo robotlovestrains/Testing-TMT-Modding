@@ -239,5 +239,6 @@ addLayer("f", {
         let Vis = false
         if (hasMilestone('s', 2)) Vis = true
         if (hasMilestone('f', 1)) Vis = true
+        return Vis
     },
 })
