@@ -182,7 +182,7 @@ addLayer("f", {
     challenges: {
         11: {
             name: "First is the Best?",
-            challengeDescription: "/100 Points and /10 Prestige Points",
+            challengeDescription: "/4 Points and /10 Prestige Points",
             canComplete: function() {return player.points.gte(100)},
             goalDescription: "Get 100 Points",
             rewardDescription: "x5 Points and Unlock 1 Finish Upgrade",
@@ -237,8 +237,8 @@ addLayer("f", {
 
     layerShown() {
         let Vis = false
-        if (hasMilestone('s', 2)) Vis = true
-        if (hasMilestone('f', 1)) Vis = true
+        if (hasMilestone('s', 3)) Vis = true
+        if (hasMilestone('f', 0)) Vis = true
         return Vis
     },
 })
