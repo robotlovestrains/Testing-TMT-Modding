@@ -18,6 +18,7 @@ addLayer("p", {
         if (hasUpgrade('p', 13)) mult = mult.times(upgradeEffect('p', 13))
         if (hasMilestone('s', 0)) mult = mult.times(2)
         if (hasMilestone('f', 0)) mult = mult.times(10)
+        if (inChallenge('f', 11)) mult = mult.times(0.1)
 
         return mult
     },
@@ -124,13 +125,13 @@ addLayer("s", {
             effect() {
                 return player[this.layer].points.pow(0.3).add(1)
             },
-            unlocked() {return hasMilestone("s", 1)},
+            unlocked() {return hasMilestone('s', 1)},
         },
         3: {
             requirementDescription: "5 Stige",
             effectDescription: "Unlock Finish Layer",
             done() { return player[this.layer].points.gte(5) },
-            unlocked() {return hasMilestone("s", 2)},
+            unlocked() {return hasMilestone('s', 2)},
         },
     },
     layerShown() { return true },
@@ -171,7 +172,72 @@ addLayer("f", {
             effectDescription: "x10 Points, Prestige and Stige Points and gain 10% of Prestige Points. Good Job.",
             done() { return player[this.layer].points.gte(1) },
         },
+        1: {
+            requirementDescription: "2 Finish",
+            effectDescription: "Unlock a challenge and x2 Points",
+            done() { return player[this.layer].points.gte(2) },
+        },
     },
 
-    layerShown() { return hasMilestone('s', 3) },
+    challenges: {
+        11: {
+            name: "First is the Best?",
+            challengeDescription: "/100 Points and /10 Prestige Points",
+            canComplete: function() {return player.points.gte(100)},
+            goalDescription: "Get 100 Points",
+            rewardDescription: "x5 Points and Unlock 1 Finish Upgrade",
+            unlocked() {return hasMilestone('f', 1)},
+        },
+    },
+
+    upgrades: {
+        11: {
+            title: "Nothing",
+            description: "(Free)",
+            cost: new Decimal(1),
+            pay() {return 0},
+            unlocked() {return hasChallenge('f', 11)},
+        },
+        12: {
+            title: "I said Nothing",
+            description: "(Free)",
+            cost: new Decimal(1),
+            pay() {return 0},
+            unlocked() {return hasUpgrade('f', 11)},
+        },
+        13: {
+            title: "Stop",
+            description: "(Free)",
+            cost: new Decimal(1),
+            pay() {return 0},
+            unlocked() {return hasUpgrade('f', 12)},
+        },
+        14: {
+            title: "Fine x1 Points",
+            description: "(Free)",
+            cost: new Decimal(1),
+            pay() {return 0},
+            unlocked() {return hasUpgrade('f', 13)},
+        },
+        15: {
+            title: "Ok Real Boost",
+            description: "x1.0001 Points (Free)",
+            cost: new Decimal(1),
+            pay() {return 0},
+            unlocked() {return hasUpgrade('f', 14)},
+        },
+        21: {
+            title: "Ok no More",
+            description: "x2.5 Points (Free?)",
+            cost: new Decimal(3),
+            pay() {return 1},
+            unlocked() {return hasUpgrade('f', 15)},
+        },
+    },
+
+    layerShown() {
+        let Vis = false
+        if (hasMilestone('s', 2)) Vis = true
+        if (hasMilestone('f', 1)) Vis = true
+    },
 })
